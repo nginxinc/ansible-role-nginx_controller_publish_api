@@ -1,4 +1,4 @@
-NGINX Controller API Publish
+NGINX Controller Publish API
 ============================
 
 Upsert (create and update) API Publishing definitions in NGINX Controller.
