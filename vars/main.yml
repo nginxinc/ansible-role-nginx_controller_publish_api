@@ -1,0 +1,20 @@
+---
+## All the below variables are REQUIRED
+
+# nginx_controller_fqdn:  # FQDN of the NGINX Controller instance
+# nginx_controller_auth_token:  Authentication token for NGINX Controller
+# nginx_controller_environment:  the environment where the definition is published
+# nginx_controller_application:  the application within the environment where the definition is published
+
+# nginx_controller_publish_api:
+#   metadata:
+#     name: # the name of the publishing definition
+#     displayName:  # a displayName for the publishing definition
+#     tags:  # an array of tags for filtering / grouping
+#     - tagOne
+#     - tagTwo
+#   desiredState:
+#     apiDefinitionVersionRef:  # the API definition that is to be published
+#       ref: "/services/api-definitions/f1-results/versions/v1"
+#     gatewayRefs:  # an array of Gateways that will host the API
+#     - ref: "/services/environments/prod/gateways/apigw"
