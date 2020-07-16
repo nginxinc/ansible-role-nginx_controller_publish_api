@@ -31,9 +31,9 @@
       Cookie: "{{ nginx_controller_auth_token }}"
   register: nginx_controller_publish_api_status
 
-- name: Show publish_api status
-  debug:
-    msg: "{{ nginx_controller_publish_api_status }}"
+# - name: Show publish_api status
+#   debug:
+#     msg: "{{ nginx_controller_publish_api_status }}"
 
 - name: Pause while system initiates changes
   pause:
@@ -43,7 +43,6 @@
   uri:
     url: "{{ publish_api_url }}"
     method: "GET"
-    body_format: json
     status_code:
       - 200
       - 201
@@ -52,16 +51,16 @@
     validate_certs: "{{ nginx_controller_validate_certs | default(false) }}"
     headers:
       Cookie: "{{ nginx_controller_auth_token }}"
-  register: nginx_controller_api_publish_current_status
-  until: (nginx_controller_api_publish_current_status is defined) and
-         (not nginx_controller_api_publish_current_status.json.currentStatus.state.selfConfigState.isConfiguring | bool)
+  register: nginx_controller_publish_current_status
+  until: (nginx_controller_publish_current_status is defined) and
+         (not nginx_controller_publish_current_status.json.currentStatus.state.selfConfigState.isConfiguring | bool)
   retries: 50
   delay: 2
-  failed_when: nginx_controller_api_publish_current_status.json.currentStatus.state.selfConfigState.isError | bool
+  failed_when: nginx_controller_publish_current_status.json.currentStatus.state.selfConfigState.isError | bool
   ignore_errors: true
 
  # above simply errors but does not include the informative failure messages from Controller 
 - name: report failure details from Controller
   fail:
-    msg: "{{ nginx_controller_api_publish_current_status.json.currentStatus.state.conditions }}"
-  when: nginx_controller_api_publish_current_status.json.currentStatus.state.selfConfigState.isError | bool
+    msg: "{{ nginx_controller_publish_current_status.json.currentStatus.state.conditions }}"
+  when: nginx_controller_publish_current_status.json.currentStatus.state.selfConfigState.isError | bool
