@@ -3,8 +3,8 @@
 
 # nginx_controller_fqdn:  # FQDN of the NGINX Controller instance
 # nginx_controller_auth_token:  Authentication token for NGINX Controller
-# nginx_controller_environment:  the environment where the definition is published
-# nginx_controller_application:  the application within the environment where the definition is published
+# nginx_controller_environmentName:  the environment where the definition is published
+# nginx_controller_appName:  the application within the environment where the definition is published
 
 # nginx_controller_publish_api:
 #   metadata:
@@ -17,4 +17,4 @@
 #     apiDefinitionVersionRef:  # the API definition that is to be published
 #       ref: "/services/api-definitions/f1-results/versions/v1"
 #     gatewayRefs:  # an array of Gateways that will host the API
-#     - ref: "/services/environments/prod/gateways/apigw"
+#     - ref: "/services/environments/{{ nginx_controller_environmentName }}/gateways/apigw"

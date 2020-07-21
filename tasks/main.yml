@@ -13,7 +13,7 @@
 
 - name: Form the publish_api API url
   set_fact:
-    publish_api_url: "https://{{ nginx_controller_fqdn }}/{{ nginx_controller_api_version }}/services/environments/{{ nginx_controller_environment }}/apps/{{ nginx_controller_application }}/published-apis/{{ nginx_controller_publish_api.metadata.name }}"
+    publish_api_url: "https://{{ nginx_controller_fqdn }}/{{ nginx_controller_api_version }}/services/environments/{{ nginx_controller_environmentName }}/apps/{{ nginx_controller_appName }}/published-apis/{{ nginx_controller_publish_api.metadata.name }}"
 
 - name: Upsert publish_api (create if absent, change if present)
   uri:
