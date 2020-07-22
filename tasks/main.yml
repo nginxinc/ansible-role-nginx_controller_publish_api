@@ -5,8 +5,8 @@
   loop:
     - nginx_controller_fqdn
     - nginx_controller_auth_token
-    - nginx_controller_environment
-    - nginx_controller_application
+    - nginx_controller_environmentName
+    - nginx_controller_appName
     - nginx_controller_publish_api.metadata.name
     - nginx_controller_publish_api.desiredState.apiDefinitionVersionRef.ref
     - nginx_controller_publish_api.desiredState.gatewayRefs[0]
