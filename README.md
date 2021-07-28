@@ -54,8 +54,8 @@ To use this role you can create a playbook such as the following (let's name it 
       include_role:
         name: nginxinc.nginx_controller_publish_api
       vars:
-        nginx_controller_environment: "prod"
-        nginx_controller_application: "sports-results"
+        nginx_controller_environmentName: "prod"
+        nginx_controller_appName: "sports-results"
         nginx_controller_publish_api:
           metadata:
             name: "f1-v1-prod"
@@ -65,7 +65,7 @@ To use this role you can create a playbook such as the following (let's name it 
             - tagTwo
           desiredState:
             apiDefinitionVersionRef:
-            - ref: "/services/api-definitions/f1-results/versions/v1"
+              ref: "/services/api-definitions/f1-results/versions/v1"
             gatewayRefs:
             - ref: "/services/environments/prod/gateways/apigw"
 ```
