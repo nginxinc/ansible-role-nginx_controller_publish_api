@@ -1,0 +1,27 @@
+---
+- name: Converge
+  hosts: controllers
+
+  vars:
+    nginx_controller_validate_certs: false
+    nginx_controller_fqdn: mock-server.molecule-test:1080
+    nginx_controller_auth_token: "ABC123"
+    nginx_controller_environmentName: "production"
+    nginx_controller_appName: "sports-results"
+    nginx_controller_publish_api:
+      metadata:
+        name: "f1-v1-prod"
+        displayName: "F1 Results"
+        tags:
+          - tagOne
+          - tagTwo
+      desiredState:
+        apiDefinitionVersionRef:
+          ref: "/services/api-definitions/f1-results/versions/v1"
+        gatewayRefs:
+          - ref: "/services/environments/production/gateways/www.example.com"
+
+  tasks:
+    - name: Call Publish API Role
+      include_role:
+        name: ansible-role-nginx_controller_publish_api

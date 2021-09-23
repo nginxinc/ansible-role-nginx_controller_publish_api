@@ -61,13 +61,13 @@ To use this role you can create a playbook such as the following (let's name it 
             name: "f1-v1-prod"
             displayName: "F1 Results ðŸ�Ž"
             tags:
-            - tagOne
-            - tagTwo
+              - tagOne
+              - tagTwo
           desiredState:
             apiDefinitionVersionRef:
               ref: "/services/api-definitions/f1-results/versions/v1"
             gatewayRefs:
-            - ref: "/services/environments/prod/gateways/apigw"
+              - ref: "/services/environments/prod/gateways/apigw"
 ```
 
 You can then run `ansible-playbook nginx_controller_publish_api.yaml` to execute the playbook.
