@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-
-  vars:
-
-  tasks:
-    - include_role:
-        name: ansible-role-nginx_controller_publish_api
