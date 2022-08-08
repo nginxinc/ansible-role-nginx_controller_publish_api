@@ -1,6 +1,8 @@
 NGINX Controller Publish API
 ============================
 
+# This repository has been archived. There will likely be no further development on the project and security vulnerabilities may be unaddressed.
+
 Upsert (create and update) API Publishing definitions in NGINX Controller.
 Publishing an API is the act of linking an API definition version to a Gateway(s). The result of configuring this link is that the configuration is applied to the Gateway and published to a Developer Portal (if one is configured).
 
